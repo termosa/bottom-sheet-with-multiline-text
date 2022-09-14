@@ -18,14 +18,31 @@ class Application extends StatelessWidget {
   }
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  bool autofocus = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
       child: Column(mainAxisSize: MainAxisSize.min, children: [
+        Row(mainAxisSize: MainAxisSize.min, children: [
+          Checkbox(
+              value: autofocus,
+              onChanged: (value) {
+                setState(() {
+                  autofocus = value ?? false;
+                });
+              }),
+          const Text("Auto Focus"),
+        ]),
         TextButton(
           child: const Text("Pure"),
           onPressed: () => openPure(context),
@@ -60,7 +77,8 @@ class Home extends StatelessWidget {
         isScrollControlled: true,
         builder: (context) => Container(
               padding: const EdgeInsets.all(40),
-              child: const TextField(
+              child: TextField(
+                autofocus: autofocus,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
               ),
@@ -76,7 +94,8 @@ class Home extends StatelessWidget {
                 bottom: MediaQuery.of(context).viewInsets.bottom),
             child: Container(
               padding: const EdgeInsets.all(40),
-              child: const TextField(
+              child: TextField(
+                autofocus: autofocus,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
               ),
@@ -90,7 +109,8 @@ class Home extends StatelessWidget {
         builder: (context) => SingleChildScrollView(
                 child: Container(
               padding: const EdgeInsets.all(40),
-              child: const TextField(
+              child: TextField(
+                autofocus: autofocus,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
               ),
@@ -104,7 +124,8 @@ class Home extends StatelessWidget {
         builder: (context) => SingleChildScrollView(
                 child: Container(
               padding: const EdgeInsets.all(40),
-              child: const TextField(
+              child: TextField(
+                autofocus: autofocus,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
               ),
@@ -121,7 +142,8 @@ class Home extends StatelessWidget {
                     bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: Container(
                   padding: const EdgeInsets.all(40),
-                  child: const TextField(
+                  child: TextField(
+                    autofocus: autofocus,
                     keyboardType: TextInputType.multiline,
                     maxLines: null,
                   ),
@@ -137,7 +159,8 @@ class Home extends StatelessWidget {
                 bottom: MediaQuery.of(context).viewInsets.bottom),
             child: Container(
               padding: const EdgeInsets.all(40),
-              child: const TextField(
+              child: TextField(
+                autofocus: autofocus,
                 keyboardType: TextInputType.multiline,
                 maxLines: null,
               ),
